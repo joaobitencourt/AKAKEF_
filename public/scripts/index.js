@@ -1,9 +1,5 @@
-const cep = document.querySelector("#cep-frete");
-
-cep.addEventListener("click", (e) =>{
-    let cepValue = document.querySelector("#cep-frete-value").value
-    console.log(cepValue);
-    
-})
-
+function load(){
+    document.getElementById("loadContent").style.display = "none"; 
+    document.getElementById("mainContent").style.display = "block";
+}
 
