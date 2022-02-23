@@ -1,0 +1,29 @@
+     <section class="OptionTiteleHeader">
+            <span class="titleFinesse">Looks</span>
+    </section>
+<div style="overflow-x:auto;">
+<table>
+        <thead>
+            <tr>
+                <th scope="col">Codigo da imagem</th>
+                <th scope="col">Acesibilidade</th>
+                <th scope="col">Imagenm</th>
+                <th scope="col">Criado</th>
+                <th scope="col">Atualizado</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each look}}
+            <tr>
+                <td>{{this.idLook}} </td>
+                <td>{{this.imgalt}}</td>
+                <td>{{this.imglook}}</td>
+                <td> {{this.createdAt}}</td>
+                <td>{{this.updatedAt}}</td>
+                <td> <a href="">edit</a> | <a href="">delete</a> | <a href="">create</a></td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

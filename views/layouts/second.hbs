@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/second.css">
+    <script src="https://kit.fontawesome.com/8f0503e7b9.js" crossorigin="anonymous"></script>
+    <title>DashBoard</title>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            {{!-- <li><p><i class="fas fa-bars"></i></p></li> --}}
+            <li> <p>Area do Funcionario</p> </li>
+            <li> <p>Perfil</p> </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div id="sideBarMenu">
+        <nav>
+            <ul>
+                <li><span><a href="/lookbook" class="title5"><span class="icon"><i class="fas fa-book"></i></span>Lookbook</a></span>  </li>
+                <li><span><a href="/" class="title5"><span class="icon"><i class="fas fa-tshirt"></i></span>Shop</a></span>  </li>
+                <li><span><a href="/" class="title5"><span class="icon"><i  class="fas fa-feather-alt"></i></span>About</a></span>  </li>
+                <li><span><a href="/admin/all" class="title5"><span class="icon"><i  class="fas fa-truck-loading"></i> </span>Products</a></span>  </li>
+                <li><span><a href="/" class="title5"><span class="icon"><i class="fas fa-handshake"></i></span>Funcionarios</a></span>  </li>
+                <li><span><a href="/" class="title5"><span class="icon"><i  class="fas fa-graduation-cap"></i></span>Cargos</a></span>  </li>
+                <li><span><a href="/admin/lookbook/all" class="title5"><span class="icon"><i  class="fas fa-book"></i></span>Looks</a></span>  </li>  
+            </ul>
+        </nav>
+    </div>
+    <div id="GeneralContent">
+        {{{ body }}}
+    </div>
+</main>
+</body>
+</html>

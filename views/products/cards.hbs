@@ -1,0 +1,18 @@
+     <section class="OptionTiteleHeader">
+            <span class="titleFinesse">Shop</span>
+    </section>
+    <div class="products center" id="Center-Content">
+        {{#each product}}
+        <secton class="cards">
+            <Section class="imgproduct">
+                <a href="/product/details/{{this.idProd}}"> 
+                    <span><img src=" {{this.imageProd}} " alt=""></span>
+                </a>
+            </Section>
+            <section class="cardInfoProd">
+                <p class="p1"> {{this.nameProd}} </p>
+                <p>R$ {{this.valProd}} </p>
+            </section>
+        </secton>
+        {{/each}}
+    </div>

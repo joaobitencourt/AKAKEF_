@@ -1,0 +1,39 @@
+<div class="contentDetails">
+            <div id="idtop">
+                <section class="imgDetailsProd">
+                    <img src="{{product.imageProd}}" alt="FOTO">
+                </section>
+                <section class="infoDetails">
+                    <section class="infoDetailsProd">
+                        <span class="title1">{{product.nameProd}}</span>
+                        <p>R$ {{product.valProd}}</p>
+                        <button type="submit"  class="button title2"> Add to Cart </button>
+                    </section>
+                    <section class="infoDetailsProdCep">
+                        <span class="title3"> Calcular Frete </span>
+                        <section class="infoDetailsProdCepRow">
+                            <i class="fas fa-truck"></i>
+                            <form action="">
+                                <div class="wrapper">
+                                    <div class="input-Data">
+                                        <input id="cep-frete-value" type="text" name="nome" required>
+                                        <section class="line"></section>
+                                        <label class="title3">CEP</label>
+                                    </div>
+                                </div>
+                            </form>
+                            <span class="buttonBlackWhite title2" id="cep-frete" > OK </span>
+                        </section>
+                    </section>
+                </section>
+            </div>
+            <section class="detailsFooter">
+                <span class="title1">Description</span>
+                <p> Tamanho: {{product.sizeProd}}</p>
+                <p> Tipo: {{product.typeProd}}</p>
+                <p> Cor: {{product.colorProd}}</p>
+                <p> Peso: {{product.wieghtProd}} g</p>
+                <p> Descrição: {{product.descProd}}</p>
+            </section>
+        </div>
+            <script data-main = "scripts/main" src="/scripts/index.js"></script>

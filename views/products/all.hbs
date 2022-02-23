@@ -1,0 +1,36 @@
+     <section class="OptionTiteleHeader">
+            <span class="titleFinesse">Produtos</span> 
+            <a href="/admin/product/create">create</a>
+    </section>
+<div style="overflow-x:auto;">
+<table>
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Tamanho</th>
+                <th scope="col">Qantidade</th>
+                <th scope="col">Tipo do Produto</th>
+                <th scope="col">Cor</th>
+                <th scope="col">Imagem</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {{#each product}}
+            <tr>
+                <td>{{this.idProd}} </td>
+                <td>{{this.nameProd}}</td>
+                <td>{{this.descProd}}</td>
+                <td> {{this.sizeProd}}</td>
+                <td>{{this.qtdProd}}</td>
+                <td>{{this.typeProd}}</td>
+                <td>{{this.colorProd}}</td>
+                <td><img style="width: 5em; height: 5em;"  src="{{this.imageProd}}"></td>
+                <td> <a href="">edit</a> | <a href="">delete</a> </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

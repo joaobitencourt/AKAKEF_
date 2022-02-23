@@ -1,0 +1,43 @@
+     <section class="OptionTiteleHeader">
+            <span class="titleFinesse">Cadastro de produtos</span>
+    </section>
+    {{!-- o enctype serve para mostrar que o formulário ira mandar mais de um tipo de dado --}}
+    <form action="/admin/product/create" method="post" enctype="multipart/form-data" class="form">
+        <div class="form-control">
+        <label for="nameProd">Nome:</label>
+        <input type="text" name="nameProd" placeholder="Digite o nome do produto">
+    </div>
+    <div class="form-control">
+        <label for="valProd">Valor do Produto:</label>
+        <input type="text" name="valProd" placeholder="Digite o valor do produto">
+    </div>    
+    <div class="form-control">
+        <label for="sizeProd">Tamanho do Produto:</label>
+        <input type="text" name="sizeProd" placeholder="Digite o nome do produto">
+    </div>
+     <div class="form-control">
+        <label for="wieghtProd">Peso do Produto:</label>
+        <input type="text" name="wieghtProd" placeholder="Digite o peso do produto">
+    </div>
+    <div class="form-control">
+        <label for="qtdProd">Quantidade do Produto:</label>
+        <input type="text" name="qtdProd" placeholder="Digite o nome do produto">
+    </div>
+    <div class="form-control">
+        <label for="typeProd">Tipo do Produto:</label>
+        <input type="text" name="typeProd" placeholder="Digite o nome do produto">
+    </div>
+    <div class="form-control">
+        <label for="colorProd">Cor do Produto:</label>
+        <input type="text" name="colorProd" placeholder="Digite a cor do produto">
+    </div>
+    <div class="form-control">
+        <label for="descProd">Descrição do Produto:</label>
+        <input type="text" name="descProd" placeholder="Escolha a imagem do produto">
+    </div>
+    <div class="form-control">
+        <label for="imageProd">Imagem do produto:</label>
+        <input type="file" name="imageProd" placeholder="Descrição do produto"></textarea>
+    </div>
+    <input type="submit" value="Cadasrtar" class="buttonBlackWhite title2">
+    </form>
