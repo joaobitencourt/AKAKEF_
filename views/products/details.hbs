@@ -13,17 +13,20 @@
                         <span class="title3"> Calcular Frete </span>
                         <section class="infoDetailsProdCepRow">
                             <i class="fas fa-truck"></i>
-                            <form action="">
+                            <form action="/product/details/{{product.idProd}}" method="post">
                                 <div class="wrapper">
                                     <div class="input-Data">
-                                        <input id="cep-frete-value" type="text" name="nome" required>
+                                        <input id="cep-frete-value" type="text" name="cep" required>
                                         <section class="line"></section>
                                         <label class="title3">CEP</label>
                                     </div>
                                 </div>
+                                <input class="buttonBlackWhite title2" id="cep-frete" type="submit" value="OK">
                             </form>
-                            <span class="buttonBlackWhite title2" id="cep-frete" > OK </span>
                         </section>
+{{!--                         {{#each response}}
+                         <p> {{response.Codigo}}</p>
+                        {{/each}} --}}
                     </section>
                 </section>
             </div>

@@ -13,7 +13,32 @@ module.exports = class ProductController{
             console.error(error);
         }
     }
-
+    /* get mail */    
+    static async getCepPreco (req, res){
+        const cep = req.body.cep;
+            if(!cep){
+                console.log("sem cep");
+            }else{
+                let args = {
+                    //any value is valid dont wory with format
+                    sCepOrigem: '81200100',
+                    sCepDestino: cep,
+                    nVlPeso: '1',
+                    nCdFormato: '1',
+                    nVlComprimento: '20',
+                    nVlAltura: '20',
+                    nVlLargura: '20',
+                    nCdServico: ['04014'], //Array com os códigos de serviço
+                    nVlDiametro: '0',
+                };
+              await calcularPrecoPrazo (args).then((response)  => {
+                    console.log(response);
+                    const idProd = req.params.idProd;
+                    res.redirect(`/product/details/${idProd}`);
+                }).catch(error => console.log("Error.:"+error.message));
+            }
+        }
+    
     /* Select * from admin */
     static async showProductsAll (req, res){
         const product = await Product.findAll({raw: true});
@@ -59,4 +84,5 @@ module.exports = class ProductController{
     static createProducts (req, res){
         res.render("products/create", {layout: "second"});
     }
+
 }
