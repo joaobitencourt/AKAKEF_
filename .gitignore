@@ -1,4 +1,4 @@
-node_modules
+node_modules/
 .env
 SDKimgsTeste.json
-/public/img/bag.png
+**bag.png

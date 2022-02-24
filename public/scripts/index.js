@@ -1,5 +1,11 @@
-function load(){
-    document.getElementById("loadContent").style.display = "none"; 
+/* function load(){
+   
     document.getElementById("mainContent").style.display = "block";
-}
+} */
 
+document.addEventListener("DOMContentLoaded", (e) =>{
+    setTimeout(() => {
+        document.getElementById("load").style.display = "none"; 
+        document.getElementById("pageContent").style.removeProperty("display");
+    }, 3000);
+});
