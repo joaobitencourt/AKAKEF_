@@ -7,5 +7,5 @@ document.addEventListener("DOMContentLoaded", (e) =>{
     setTimeout(() => {
         document.getElementById("load").style.display = "none"; 
         document.getElementById("pageContent").style.removeProperty("display");
-    }, 3000);
+    }, 1500);
 });

@@ -113,6 +113,9 @@ p {
   background: var(--opaque-Black);
 }
 
+/* Messagens Conteiners */
+
+
 body {
   display: flex;
   flex-direction: column;

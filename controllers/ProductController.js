@@ -34,6 +34,9 @@ module.exports = class ProductController{
               await calcularPrecoPrazo (args).then((response)  => {
                     console.log(response);
                     const idProd = req.params.idProd;
+                    const valid = req.query.Valor
+                    console.log(valid);
+                    console.log(response.query.Valor);
                     res.redirect(`/product/details/${idProd}`);
                 }).catch(error => console.log("Error.:"+error.message));
             }
@@ -50,23 +53,53 @@ module.exports = class ProductController{
     }
     /* Create a Product */
     static async createProductSave (req,res){
-        const product = {
-            nameProd: req.body.nameProd,
-            valProd: req.body.valProd,
-            sizeProd: req.body.sizeProd,
-            wieghtProd: req.body.wieghtProd,
-            qtdProd: req.body.qtdProd,
-            typeProd: req.body.typeProd,
-            colorProd: req.body.colorProd,
-            descProd: req.body.descProd,
-            imageProd: req.file.firebaseUrl,
+        var errors = []
+        if(!req.body.nameProd.nameProd || typeof req.body.nameProd.nameProd == undefined || req.body.nameProd.nameProd == null){
+            errors.push({texto: "Campo vasio"});
         }
-        await Product.create(product);
-
-        try {
-            res.render("products/create", {layout:"second"})
-        } catch (error) {
-            console.log(error)
+       /*  if(!product.valProd || typeof product.valProd == undefined || product.valProd == null){
+            errors.push({texto: "Campo vasio"});
+        }
+        if(!product.sizeProd || typeof product.sizeProd == undefined || product.sizeProd == null){
+            errors.push({texto: "Campo vasio"});
+        }
+        if(!product.wieghtProd || typeof product.wieghtProd == undefined || product.wieghtProd == null){
+            errors.push({texto: "Campo vasio"});
+        }
+        if(!product.qtdProd || typeof product.qtdProd == undefined || product.qtdProd == null){
+            errors.push({texto: "Campo vasio"});
+        }
+        if(!product.typeProd || typeof product.typeProd == undefined || product.typeProd == null){
+            errors.push({texto: "Campo vasio"});
+        }
+        if(!product.colorProd || typeof product.colorProd == undefined || product.colorProd == null){
+            errors.push({texto: "Campo vasio"});
+        }
+        if(!product.descProd || typeof product.descProd == undefined || product.descProd == null){
+            errors.push({texto: "Campo vasio"});
+        }
+        if(!product.imageProd || typeof product.imageProd == undefined || product.imageProd == null){
+            errors.push({texto: "Campo vasio"});
+        } */
+        if(errors.length > 0){
+            res.render("products/create", { errors: errors ,layout:"second"});
+        }else{
+            const product = {
+                nameProd: req.body.nameProd,
+                valProd: req.body.valProd,
+                sizeProd: req.body.sizeProd,
+                wieghtProd: req.body.wieghtProd,
+                qtdProd: req.body.qtdProd,
+                typeProd: req.body.typeProd,
+                colorProd: req.body.colorProd,
+                descProd: req.body.descProd,
+                imageProd: req.file.firebaseUrl,
+            }
+    
+            await Product.create(product).then(()=>{
+                console.log("Produto cadastrado com sucesso!");
+                res.render("products/create", {layout:"second"});
+            }).catch((error)=>{console.log("Error.: Algumas coisa deu errado no cadastro" + error.message);});
         }
     }
 
