@@ -54,52 +54,32 @@ module.exports = class ProductController{
     /* Create a Product */
     static async createProductSave (req,res){
         var errors = []
-        if(!req.body.nameProd.nameProd || typeof req.body.nameProd.nameProd == undefined || req.body.nameProd.nameProd == null){
-            errors.push({texto: "Campo vasio"});
+        const product = {
+            nameProd: req.body.nameProd,
+            valProd: req.body.valProd,
+            sizeProd: req.body.sizeProd,
+            wieghtProd: req.body.wieghtProd,
+            qtdProd: req.body.qtdProd,
+            typeProd: req.body.typeProd,
+            colorProd: req.body.colorProd,
+            descProd: req.body.descProd,
+            imageProd: req.file.firebaseUrl,
         }
-       /*  if(!product.valProd || typeof product.valProd == undefined || product.valProd == null){
-            errors.push({texto: "Campo vasio"});
+        if(!product.nameProd || typeof product.nameProd == undefined || product.nameProd == null){
+            errors.push({texto: "Campo nome do produto vasio"});
         }
-        if(!product.sizeProd || typeof product.sizeProd == undefined || product.sizeProd == null){
-            errors.push({texto: "Campo vasio"});
-        }
-        if(!product.wieghtProd || typeof product.wieghtProd == undefined || product.wieghtProd == null){
-            errors.push({texto: "Campo vasio"});
-        }
-        if(!product.qtdProd || typeof product.qtdProd == undefined || product.qtdProd == null){
-            errors.push({texto: "Campo vasio"});
-        }
-        if(!product.typeProd || typeof product.typeProd == undefined || product.typeProd == null){
-            errors.push({texto: "Campo vasio"});
-        }
-        if(!product.colorProd || typeof product.colorProd == undefined || product.colorProd == null){
-            errors.push({texto: "Campo vasio"});
-        }
-        if(!product.descProd || typeof product.descProd == undefined || product.descProd == null){
-            errors.push({texto: "Campo vasio"});
-        }
-        if(!product.imageProd || typeof product.imageProd == undefined || product.imageProd == null){
-            errors.push({texto: "Campo vasio"});
-        } */
         if(errors.length > 0){
-            res.render("products/create", { errors: errors ,layout:"second"});
+            res.render("products/create", { errors: errors, layout:"second"});
         }else{
-            const product = {
-                nameProd: req.body.nameProd,
-                valProd: req.body.valProd,
-                sizeProd: req.body.sizeProd,
-                wieghtProd: req.body.wieghtProd,
-                qtdProd: req.body.qtdProd,
-                typeProd: req.body.typeProd,
-                colorProd: req.body.colorProd,
-                descProd: req.body.descProd,
-                imageProd: req.file.firebaseUrl,
-            }
-    
+            console.log(product);
             await Product.create(product).then(()=>{
-                console.log("Produto cadastrado com sucesso!");
-                res.render("products/create", {layout:"second"});
-            }).catch((error)=>{console.log("Error.: Algumas coisa deu errado no cadastro" + error.message);});
+                req.flash("success_msg", "Produto cadastrado com sucesso!");
+                res.redirect("/admin/product/all");
+            }).catch((error)=>{
+                req.flash("error_msg", "Algumas coisa deu errado ao cadastrar o produto, Tente outra vez!");
+                res.redirect("/admin/product/create");
+                console.log("Error.: algo deu errado " + error.message);
+            });
         }
     }
 

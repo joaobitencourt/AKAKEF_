@@ -68,6 +68,13 @@ p {
   font-size: 18px;
   line-height: 27px;
 }
+.normalCase {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 27px;
+}
   
 .button {
   font-family: "Poppins";
@@ -101,6 +108,27 @@ p {
   background: var(--opaque-Black);
 }
 
+/* Messages Conteiners */
+.alert{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 1rem auto;
+  height: 3.5rem;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  transition-delay: 1s;
+}
+
+.alert.error-msg{
+  background-color: coral;
+}
+
+.alert.success-msg{
+  background-color: var(--lima-green);
+}
+
 body{
   background: var(--grey);
 }
@@ -117,6 +145,7 @@ body::-webkit-scrollbar-thumb {
 
 nav{
   padding: 1.5rem 3rem;
+  max-width: 100%;
   background: #111010;
 }
 
@@ -180,6 +209,7 @@ main{
 
 main #GeneralContent{
   margin: 1rem auto;
+  min-width: 0;
 }
 
 /*  Form   */

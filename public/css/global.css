@@ -113,7 +113,26 @@ p {
   background: var(--opaque-Black);
 }
 
-/* Messagens Conteiners */
+/* Messages Conteiners */
+.alert{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 1rem auto;
+  height: 3.5rem;
+  border-radius: 8px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  transition-delay: 1s;
+}
+
+.alert.error-msg{
+  background-color: coral;
+}
+
+.alert.success-msg{
+  background-color: var(--lima-green);
+}
 
 
 body {
