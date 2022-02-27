@@ -66,7 +66,31 @@ module.exports = class ProductController{
             imageProd: req.file.firebaseUrl,
         }
         if(!product.nameProd || typeof product.nameProd == undefined || product.nameProd == null){
-            errors.push({texto: "Campo nome do produto vasio"});
+            errors.push({texto: "Campo nome do produto vazio"});
+        }
+        if(!product.valProd || typeof product.valProd == undefined || product.valProd == null){
+            errors.push({texto: "Campo valor do produto não pode ser vazio"});
+        }
+        if(!product.sizeProd || typeof product.sizeProd == undefined || product.sizeProd == null){
+            errors.push({texto: "Campo tamnaho do produto não pode ser vazio"});
+        }
+        if(!product.wieghtProd || typeof product.wieghtProd == undefined || product.wieghtProd == null){
+            errors.push({texto: "Campo peso não pode ser vazio"});
+        }
+        if(!product.qtdProd || typeof product.qtdProd == undefined || product.qtdProd == null){
+            errors.push({texto: "Campo quantidade não pode ser vazio"});
+        }
+        if(!product.typeProd || typeof product.typeProd == undefined || product.typeProd == null){
+            errors.push({texto: "Campo tipo do produto não pode ser vazio"});
+        }
+        if(!product.colorProd || typeof product.colorProd == undefined || product.colorProd == null){
+            errors.push({texto: "Campo cor não pode ser  vazio"});
+        }
+        if(!product.descProd || typeof product.descProd == undefined || product.descProd == null){
+            errors.push({texto: "Campo descrição não pode ser vazio"});
+        }
+        if(!product.imageProd || typeof product.imageProd == undefined || product.imageProd == null){
+            errors.push({texto: "Campo imagem não pode ser vazio"});
         }
         if(errors.length > 0){
             res.render("products/create", { errors: errors, layout:"second"});
