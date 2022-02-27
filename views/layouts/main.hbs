@@ -11,13 +11,18 @@
 </head>
 
 <body>
-    {{>_register}}
     <div id="load"  class="fade-in">
         <div class="loadContent">   
          <iframe src="https://giphy.com/embed/d4LCNnahmwbPW" width="480" height="480" frameBorder="0" ></iframe>
         </div>
     </div>
-    <div id="pageContent"  class="fade-in" style=" display: none ; transition: all .5s ease-in-out">
+    <div id="modalConteiner">
+        <div class="modalContent">
+             <span class="titleFinesse">Cadastro</span>
+        {{> _register}}
+        </div>
+    </div>
+    <div id="pageContent"  class="fade-in blur" style=" display: none ; transition: all .5s ease-in-out">
     <header>
         <div class="menu responsiveMenu">
             <section class="toggle humburguer" onclick="toggleMenu()"></section>
