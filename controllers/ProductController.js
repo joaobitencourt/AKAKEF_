@@ -74,6 +74,7 @@ module.exports = class ProductController{
             console.log(product);
             await Product.create(product).then(()=>{
                 req.flash("success_msg", "Produto cadastrado com sucesso!");
+
                 res.redirect("/admin/product/all");
             }).catch((error)=>{
                 req.flash("error_msg", "Algumas coisa deu errado ao cadastrar o produto, Tente outra vez!");

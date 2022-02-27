@@ -112,6 +112,39 @@ p {
   transition:  .5s;
   background: var(--opaque-Black);
 }
+.linkButton{
+  padding: 1rem;
+  max-width: 30rem;
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 0;
+  text-decoration: none;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  transition:  .5s;
+}
+.linkButton.save{
+  border: 2px solid green;
+  background-color: var(--lima-green);
+  color: var(--main-Background);
+}
+.linkButton.delete{
+  border: 2px solid green;
+  background-color: #ff7f50 ;
+  color: var(--main-Background);
+}
+.linkButton.update{
+  border: 2px solid green;
+  background-color: #ff7f50;
+  color: var(--main-Background);
+}
+
+.center{
+margin: 0 auto;
+}
 
 /* Messages Conteiners */
 .alert{
@@ -133,7 +166,6 @@ p {
 .alert.success-msg{
   background-color: var(--lima-green);
 }
-
 
 body {
   display: flex;

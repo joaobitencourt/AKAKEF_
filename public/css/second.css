@@ -22,6 +22,14 @@ html {
   height: 100%;
 }
 
+.titleFinesse {
+  font-family: "Poppins", sans-serif;
+      text-align: justify;
+      font-weight: 200;
+      font-size: 50px;
+      word-break: normal;
+}
+
 .title1 {
   font-family: "Poppins", sans-serif;
   text-align: left;
@@ -86,6 +94,7 @@ p {
   text-decoration: none;
   cursor: pointer;
   border: 2px solid var(--black);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
   transition: 275ms ease;
 }
   
@@ -104,8 +113,44 @@ p {
   text-decoration: none;
   cursor: pointer;
   border: 2px solid var(--black);
+  color: var(--main-Background);
   transition:  .5s;
   background: var(--opaque-Black);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.linkButton{
+  padding: 1rem;
+  max-width: 30rem;
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins";
+  font-weight: 500;
+  line-height: 0;
+  text-decoration: none;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+  transition:  .5s;
+}
+.linkButton.save{
+  border: 2px solid green;
+  background-color: var(--lima-green);
+  color: var(--main-Background);
+}
+.linkButton.delete{
+  border: 2px solid green;
+  background-color: #ff7f50 ;
+  color: var(--main-Background);
+}
+.linkButton.update{
+  border: 2px solid green;
+  background-color: #ff7f50;
+  color: var(--main-Background);
+}
+
+.center{
+margin: 0 auto;
 }
 
 /* Messages Conteiners */
@@ -208,7 +253,7 @@ main{
 }
 
 main #GeneralContent{
-  margin: 1rem auto;
+  margin: 1rem 1rem;
   min-width: 0;
 }
 
