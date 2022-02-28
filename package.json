@@ -10,6 +10,7 @@
   "author": "Created by AkaKef and Developed by john furby",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
     "correios-brasil": "^2.2.2",
     "dotenv": "^16.0.0",

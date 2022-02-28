@@ -28,10 +28,6 @@ const Cliente = db.define("tbCliente",{
         allowNull: false,
         field: "pass_Cli",
     },
-    CEP: {
-        type: DataTypes.CHAR(200),
-        allowNull: true,
-    },
     typeAcess: {
         type: DataTypes.SMALLINT,
         allowNull: false,

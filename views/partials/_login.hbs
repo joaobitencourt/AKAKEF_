@@ -1,0 +1,19 @@
+{{#each errors}}
+    <div class="alert error-msg normalCase">{{texto}}</div>
+    {{else}}
+{{/each}}
+<span class="titleFinesse">Login</span>
+<form class="flexCenterColumn" action="/users/register" method="post">
+        <div class="wrapper">
+            <div class="input-Data">
+                <input  type="text" name="emailCli" required>
+                <section class="line"></section>
+                <label class="title3">Email</label>
+            </div> 
+            <div class="input-Data">
+                <input type="password" name="passCli" required>
+                <section class="line"></section>
+                <label class="title3">Senha</label>
+            </div>
+    <input class="linkButton save" type="submit" value="Cadastrar">
+</form>
