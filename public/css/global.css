@@ -146,6 +146,13 @@ p {
 margin: 0 auto;
 }
 
+.flexCenterColumn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
 /* Messages Conteiners */
 .alert{
   display: flex;

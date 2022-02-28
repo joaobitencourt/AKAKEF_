@@ -22,7 +22,7 @@ userArea.addEventListener("click", () =>{
 
 popup.addEventListener("click", event =>{
     const calssNameOfClickedElement = event.target.classList[0];
-    const classNames = ["modalConteiner", "linkButton"];
+    const classNames = ["modalConteiner"];
     const shouldClousePopup = classNames.some(classNames =>
     classNames === calssNameOfClickedElement);
 

@@ -58,7 +58,7 @@ app.use(express.json());
 app.use(express.static("public"));
 /* Routes */
 
-app.use("/users", require("./routes/UserRouts"));
+app.use("/", require("./routes/UserRouts"));
 app.use("/", require("./routes/lookBookRouts"));
 app.use("/", require("./routes/productsRouts"));
 
