@@ -6,7 +6,7 @@ const conn = require("./db/conn");
 const session = require("express-session");
 const flash = require("connect-flash");
 const port = process.env.APP_Port;
-
+const passport = require("./config/Auth");
 //modules
 const product = require("./models/Product"); 
 const lookbook = require("./models/LookBook");
@@ -26,6 +26,8 @@ app.use(session({
   resave:true,
   saveUninitialized: true,
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
 
 /* middleware */

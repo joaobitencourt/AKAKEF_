@@ -69,4 +69,8 @@ module.exports = class UserController{
             })
         }
     }
+
+    static login(req, res){
+        res.render("User/login");
+    }
 }
