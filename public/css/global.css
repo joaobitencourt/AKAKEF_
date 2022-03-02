@@ -79,6 +79,15 @@ p {
   font-weight: 400;
   font-size: 18px;
   line-height: 27px;
+  text-decoration: none;
+}
+
+.normalCase {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 27px;
 }
 
 .button {

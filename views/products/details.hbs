@@ -8,9 +8,9 @@
                         <span class="title1">{{product.nameProd}}</span>
                         <p>R$ {{product.valProd}}</p>
                         <section>
-                            <p class="title3">Tamanhos:</p>
+                            <p class="title3" style="text-align: justify;">Tamanhos:</p>
                             {{#each data}}
-                                <a href="/product/details/{{this.idProd}}">{{this.sizeProd}} </a>
+                                <p><a style="text-decoration: none; color: inherit;" href="/product/details/{{this.idProd}}">{{this.sizeProd}}</a></p>
                             {{/each}}
                         </section>
                         <button type="submit"  class="button title2"> Add to Cart </button>
@@ -30,12 +30,11 @@
                                 <input class="buttonBlackWhite title2" id="cep-frete" type="submit" value="OK">
                             </form>
                         </section>
-{{!--                         {{#each response}}
-                         <p> {{response.Codigo}}</p>
-                        {{/each}} --}}
+                         
                     </section>
                 </section>
             </div>
+            {{>_cep}}
             <section class="detailsFooter">
                 <span class="title1">Description</span>
                 <p> Tamanho: {{product.sizeProd}}</p>

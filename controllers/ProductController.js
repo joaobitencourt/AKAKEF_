@@ -26,7 +26,7 @@ module.exports = class ProductController{
     /* get mail */    
     static async getCepPreco (req, res){
         const cep = req.body.cep;
-            if(!cep){
+            if(!cep || typeof cep == undefined || cep == null){
                 console.log("sem cep");
             }else{
                 let args = {
@@ -41,12 +41,18 @@ module.exports = class ProductController{
                     nCdServico: ['04014'], //Array com os códigos de serviço
                     nVlDiametro: '0',
                 };
-              await calcularPrecoPrazo (args).then((response)  => {
+                 calcularPrecoPrazo(args).then((response)  => {
                     console.log(response);
+                    var dataRsponse = [];
+                    response.forEach(obj => {
+                        Object.entries(obj).forEach(([key, value]) => {
+                          /*   console.log(`${key} ${value}`); */
+                            dataRsponse.push(`${key}: ${value}`);
+                            console.log(dataRsponse);
+                        });
+                    });
+                    req.flash("cep", dataRsponse);
                     const idProd = req.params.idProd;
-                    const valid = req.query.Valor
-                    console.log(valid);
-                    console.log(response.query.Valor);
                     res.redirect(`/product/details/${idProd}`);
                 }).catch(error => console.log("Error.:"+error.message));
             }
