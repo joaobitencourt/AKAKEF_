@@ -13,7 +13,7 @@
 <body>
     <div id="load"  class="fade-in">
         <div class="loadContent">   
-         <iframe src="https://giphy.com/embed/d4LCNnahmwbPW" width="480" height="480" frameBorder="0" ></iframe>
+         {{!-- <iframe src="https://giphy.com/embed/d4LCNnahmwbPW" width="480" height="480" frameBorder="0" ></iframe> --}}
         </div>
     </div>
 {{!--     <div class="modalConteiner ">
@@ -105,9 +105,14 @@
             </a>
         </section>
     </div>
-{{>_menssages}}
 <div id="GeneralContent">
-     {{{ body }}}
+    {{#if error}}
+        <div class="alert error-msg normalCase"> {{error}} </div>
+    {{else}}
+
+    {{/if}}
+    {{>_menssages}}
+    {{{ body }}}
 </div>
     <footer class="footerContent">
         <section class="foooterContentBottom">

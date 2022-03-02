@@ -1,12 +1,8 @@
-{{#each errors}}
-    <div class="alert error-msg normalCase">{{texto}}</div>
-    {{else}}
-{{/each}}
 <span class="titleFinesse">Login</span>
 <form class="flexCenterColumn" action="/users/login" method="post">
         <div class="wrapper">
             <div class="input-Data">
-                <input  type="text" name="emailCli" required>
+                <input  type="email" name="emailCli" required>
                 <section class="line"></section>
                 <label class="title3">Email</label>
             </div> 
@@ -15,5 +11,5 @@
                 <section class="line"></section>
                 <label class="title3">Senha</label>
             </div>
-    <input class="linkButton save" type="submit" value="Cadastrar">
+    <input class="linkButton save" type="submit" value="Entrar">
 </form>

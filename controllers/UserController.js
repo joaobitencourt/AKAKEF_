@@ -1,5 +1,6 @@
 const Cliente = require("../models/Cliente");
 const bcrypt = require("bcryptjs");
+const passport = require("passport");
 
 module.exports = class UserController{
     static async register(req, res){
@@ -72,5 +73,15 @@ module.exports = class UserController{
 
     static login(req, res){
         res.render("User/login");
+    }
+
+    static loginAuth(req, res, next){
+
+        passport.authenticate("local", {
+            successRedirect: "/lookbook",
+            failureRedirect: "/",
+            failureFlash:  true,
+        })(req, res, next)
+
     }
 }
