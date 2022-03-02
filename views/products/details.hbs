@@ -7,6 +7,12 @@
                     <section class="infoDetailsProd">
                         <span class="title1">{{product.nameProd}}</span>
                         <p>R$ {{product.valProd}}</p>
+                        <section>
+                            <p class="title3">Tamanhos:</p>
+                            {{#each data}}
+                                <a href="/product/details/{{this.idProd}}">{{this.sizeProd}} </a>
+                            {{/each}}
+                        </section>
                         <button type="submit"  class="button title2"> Add to Cart </button>
                     </section>
                     <section class="infoDetailsProdCep">
@@ -37,6 +43,7 @@
                 <p> Cor: {{product.colorProd}}</p>
                 <p> Peso: {{product.wieghtProd}} g</p>
                 <p> Descrição: {{product.descProd}}</p>
+              
             </section>
         </div>
             <script data-main = "scripts/main" src="/scripts/index.js"></script>

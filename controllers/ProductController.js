@@ -1,17 +1,27 @@
 const Product = require("../models/Product");
 const { calcularPrecoPrazo } = require('correios-brasil');
-
+const sequelize = require("sequelize");
+const op = sequelize.Op;
+/* const { QueryTypes } = require('@sequelize/core');
+ */
 module.exports = class ProductController{
 
     /* get one product */
     static async getOneProduct (req, res){
         const idProd = req.params.idProd;
-        const product = await Product.findOne({raw: true, where: {idProd:idProd} });
-        try {
-            res.render("products/details", {product, layout: "main"});
-        } catch (error) {
-            console.error(error);
-        }
+        await Product.findOne({raw: true, where: {idProd:idProd} }).then((product) =>{
+            Product.findAll({raw: true, where: {nameProd: product.nameProd, [op.and]: {colorProd: product.colorProd} },
+                attributes: ['idProd', 'sizeProd'],
+                status: {
+                    [op.not]: false} }).then((data) =>{
+                        console.log(data);
+                        res.render("products/details", {product, data, layout: "main"});
+                    }).catch((error) =>{
+                        console.log("Erro.:" + error.message);
+                    })
+         }).catch((error) => {
+            console.log("Erro.:" + error.message);
+         });
     }
     /* get mail */    
     static async getCepPreco (req, res){

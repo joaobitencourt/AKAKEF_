@@ -44,7 +44,7 @@ module.exports = function(passport){
         console.log("chegou aqui deserializeUser");
         console.log(idCli);
         Cliente.findByPk(idCli, (err, user) =>{
-            done(err, user, {message: "algo deu errado!"})
+            done(err, user, {message: "algo deu errado!"});
             console.log(user);""
         })
     });
