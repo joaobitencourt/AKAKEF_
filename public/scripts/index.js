@@ -12,12 +12,14 @@ document.addEventListener("DOMContentLoaded", (e) =>{
 
 /* poop up */
 
-const userArea = document.getElementById("userArea");
+const modalPopUp = document.getElementById("modalPopUp");
 const popup = document.querySelector(".modalConteiner");
 const popupBlur = document.querySelector(".pageContent")
-userArea.addEventListener("click", () =>{
+const body = document.querySelector("body");
+modalPopUp.addEventListener("click", () =>{
     popupBlur.classList.add("blur");
     popup.style.display = "flex";
+    body.classList.add("hidden");
 });
 
 popup.addEventListener("click", event =>{
@@ -29,6 +31,24 @@ popup.addEventListener("click", event =>{
     if(shouldClousePopup){
     popup.style.display = "none";
     popupBlur.classList.remove("blur");
-
+    body.classList.remove("hidden");
     }
+});
+
+/* navSideBar */
+function toggleMenu() {
+    let navigation = document.querySelector(".navigation");
+    let toggle = document.querySelector(".toggle");
+    navigation.classList.toggle("active");
+    toggle.classList.toggle("active");
+    navigation.classList.toggle("hide");
+}
+let subeMenu = document.querySelectorAll(".collapse");
+subeMenu.forEach(subeMenur => {
+    console.log(subeMenur);
+    let collapse = subeMenur.querySelector(".collapseSubMenu");
+    console.log(collapse);
+    subeMenur.addEventListener("click", () => {
+        collapse.classList.toggle("hide");
+    });
 });

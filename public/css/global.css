@@ -121,9 +121,11 @@ p {
   transition:  .5s;
   background: var(--opaque-Black);
 }
+
 .linkButton{
   padding: 1rem;
   max-width: 30rem;
+  min-width: 5rem;
   width: 10rem;
   display: flex;
   align-items: center;
@@ -135,16 +137,19 @@ p {
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
   transition:  .5s;
 }
+
 .save{
   border: 2px solid green;
   background-color: var(--lima-green);
   color: var(--main-Background);
 }
+
 .delete{
-  border: 2px solid green;
+  border: 2px solid rgb(243, 92, 38);
   background-color: #ff7f50 ;
   color: var(--main-Background);
 }
+
 .update{
   border: 2px solid green;
   background-color: #ff7f50;
@@ -152,13 +157,25 @@ p {
 }
 
 .center{
-margin: 0 auto;
+margin: 1rem 1rem;
+}
+
+.hidden{
+  overflow: hidden;
 }
 
 .flexCenterColumn{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-flow: column;
+  margin: 1rem auto;
+}
+
+.flexStartColumn{
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
   flex-flow: column;
   margin: 1rem auto;
 }
@@ -223,16 +240,17 @@ body::-webkit-scrollbar-thumb {
 .modalConteiner{
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  justify-content: center;
-  align-items: center;
   max-width: 100%;
   max-height: 100%;
   height: 100%;
   width: 100%;
   z-index: 10;
-  background:rgba(0, 0, 0, 0.8) ;
+  background:rgba(0, 0, 0, 0.8) ;  
+}
+
+.rightFlex{
+  justify-content: end;
+  align-items: flex-end;
 }
 
 .modalConteiner .modalContent{
@@ -246,6 +264,59 @@ body::-webkit-scrollbar-thumb {
   justify-content: center;
   align-items: center;
   transition: .5s;
+}
+
+/* Shop Cart  */
+.modalConteiner .shopCart{
+  width: 30%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: var(--main-Background);
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalConteiner .shopCart .shopCartMeaddle{
+  display: flex;
+  flex-flow: column;
+  margin: 1rem 1rem;
+  width: 100%;
+}
+
+.modalConteiner 
+.shopCart 
+.shopCartMeaddle::-webkit-scrollbar{
+  width: 1px;
+} 
+
+.modalConteiner .shopCart
+ .shopCartMeaddle .shopCartItems{
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem 1rem;
+}
+
+.modalConteiner .shopCart
+ .shopCartMeaddle .shopCartItems img{
+  width: 200px;
+  height: 200px;
+}
+
+.modalConteiner .shopCart
+.shopCartItems .shopCartName{
+  width: 100%;
+  margin-left: 1rem;
+}
+
+.modalConteiner .shopCart .shopCartBottom{
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 2rem;
+  width: 25rem;
 }
 
 .menu {
@@ -540,7 +611,10 @@ footer {
   .navigation.active {
     left: 0px;
     width: 100%;
+  }
 
+  .modalConteiner .shopCart{
+    width: 100%;
   }
 
   .toggle {
@@ -805,6 +879,11 @@ margin-right: .2em;
 
 #idtop .infoDetailsProdCep .title2 {
   color: var(--main-Background);
+}
+
+.cep{
+  max-width: 50%;
+  width: 30%;
 }
 
 .detailsFooter {

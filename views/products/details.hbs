@@ -7,10 +7,10 @@
                     <section class="infoDetailsProd">
                         <span class="title1">{{product.nameProd}}</span>
                         <p>R$ {{product.valProd}}</p>
-                        <section>
-                            <p class="title3" style="text-align: justify;">Tamanhos:</p>
+                        <section class="flexStartColumn">
+                            <span class="title2" style="text-align: justify;">Tamanhos:</span>
                             {{#each data}}
-                                <p><a style="text-decoration: none; color: inherit;" href="/product/details/{{this.idProd}}">{{this.sizeProd}}</a></p>
+                                <span class="title3"><a style="text-decoration: none; color: inherit;" href="/product/details/{{this.idProd}}">{{this.sizeProd}}</a></span>
                             {{/each}}
                         </section>
                         <button type="submit"  class="button title2"> Add to Cart </button>

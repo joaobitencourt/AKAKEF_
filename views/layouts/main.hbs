@@ -16,13 +16,11 @@
          {{!-- <iframe src="https://giphy.com/embed/d4LCNnahmwbPW" width="480" height="480" frameBorder="0" ></iframe> --}}
         </div>
     </div>
-{{!--     <div class="modalConteiner ">
-        <div class="modalContent fade-in">
-            
-        {{> _register}}
-        </div>
-    </div> --}}
-    <div id="pageContent"  class="pageContent fade-in" style=" display: none ; transition: all .5s ease-in-out">
+    <div class="modalConteiner rightFlex">
+        {{> _cart}}
+    </div>
+
+    <div id="pageContent"  class="pageContent fade-in" style=" overflow: hidden; display: none ; transition: all .5s ease-in-out">
     <header>
         <div class="menu responsiveMenu">
             <section class="toggle humburguer" onclick="toggleMenu()"></section>
@@ -32,7 +30,7 @@
 
             <section class="menuItens">
                 <li id="userArea" class="iconBar user"><a href="/users/login"> <i class="fas fa-user"></i> </a></li>
-                <li class="iconBar "><a href="#"> <i class="fas fa-shopping-bag "></i> </a></li>
+                <li id="modalPopUp" class="iconBar "><a href="#"> <i class="fas fa-shopping-bag "></i> </a></li>
             </section>
         </div>
     </header>
@@ -105,6 +103,7 @@
             </a>
         </section>
     </div>
+  
 <div id="GeneralContent">
     {{#if error}}
         <div class="alert error-msg normalCase"> {{error}} </div>
@@ -119,28 +118,7 @@
             <p>All Right reserved by Aka Kef</p>
         </section>
     </footer>
-    <script src="/scripts/index.js"></script>
-    <script>
-        //
-        function toggleMenu() {
-            let navigation = document.querySelector(".navigation");
-            let toggle = document.querySelector(".toggle");
-            navigation.classList.toggle("active");
-            toggle.classList.toggle("active");
-            navigation.classList.toggle("hide");
-        }
-
-        // submenu hambuguer
-        let subeMenu = document.querySelectorAll(".collapse");
-        subeMenu.forEach(subeMenur => {
-            console.log(subeMenur);
-            let collapse = subeMenur.querySelector(".collapseSubMenu");
-            console.log(collapse);
-            subeMenur.addEventListener("click", () => {
-                collapse.classList.toggle("hide");
-            });
-        });
-    </script>
     </div>
+    <script src="/scripts/index.js"></script>
 </body>
 </html>
