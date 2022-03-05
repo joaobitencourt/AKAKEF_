@@ -52,3 +52,55 @@ subeMenu.forEach(subeMenur => {
         collapse.classList.toggle("hide");
     });
 });
+
+/* Cart */
+/* const addCart = document.querySelector("#addCart");
+ */
+function getProductContent() {
+    const productCart = {
+        imageProd: document.getElementById("imageProd").getAttribute("src"),
+        nameProd: document.getElementById("nameProd").textContent,
+        sizeProd: document.getElementById("sizeProd").textContent,
+        colorProd: document.getElementById("colorProd").textContent,
+        valProd: document.getElementById("valProd").textContent
+    }
+    return productCart
+}
+/* addCart.addEventListener("click", ()=>{
+    let productCart = {
+        imageProd: document.getElementById("imageProd").getAttribute("src"),
+        nameProd: document.getElementById("nameProd").textContent,
+        sizeProd: document.getElementById("sizeProd").textContent,
+        colorProd: document.getElementById("colorProd").textContent,
+        valProd: document.getElementById("valProd").textContent
+    }
+    return productCart
+}); */
+
+function sendDataToLocalStogare() {
+    let myArrry =[];
+
+/* Serialize e Adicionando no Locla Storage */
+let productCart_Serialized = JSON.stringify(productCart = getProductContent());
+myArrry.push(productCart_Serialized);
+localStorage.setItem("item", myArrry);
+alert("Item Adicionado no Carrinho!")
+
+/* Desserializer e Pegando os dasdos do objct json */
+let itemData = localStorage.getItem("item");
+let data = JSON.parse(itemData);
+
+}
+
+/* 
+function getItems(data) {
+    document.getElementById("image").setAttribute("src", data.imageProd)
+    document.getElementById("name").textContent = data.nameProd;
+    document.getElementById("size").textContent = data.sizeProd;
+    document.getElementById("color").textContent = data.colorProd;
+    document.getElementById("val").textContent = data.valProd;
+    console.log(data.imageProd, data.nameProd,
+    data.sizeProd,
+    data.colorProd,
+    data.valProd);
+} */

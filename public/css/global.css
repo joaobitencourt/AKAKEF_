@@ -309,7 +309,7 @@ body::-webkit-scrollbar-thumb {
 .modalConteiner .shopCart
 .shopCartItems .shopCartName{
   width: 100%;
-  margin-left: 1rem;
+  margin: 1.5rem 1.5rem;
 }
 
 .modalConteiner .shopCart .shopCartBottom{

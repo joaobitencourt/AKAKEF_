@@ -1,19 +1,19 @@
 <div class="contentDetails">
             <div id="idtop">
                 <section class="imgDetailsProd">
-                    <img src="{{product.imageProd}}" alt="FOTO">
+                    <img id="imageProd" src="{{product.imageProd}}" alt="FOTO">
                 </section>
                 <section class="infoDetails">
                     <section class="infoDetailsProd">
-                        <span class="title1">{{product.nameProd}}</span>
-                        <p>R$ {{product.valProd}}</p>
+                        <span id="nameProd" class="title1">{{product.nameProd}}</span>
+                        <p id="valProd">R${{product.valProd}}</p>
                         <section class="flexStartColumn">
                             <span class="title2" style="text-align: justify;">Tamanhos:</span>
                             {{#each data}}
                                 <span class="title3"><a style="text-decoration: none; color: inherit;" href="/product/details/{{this.idProd}}">{{this.sizeProd}}</a></span>
                             {{/each}}
                         </section>
-                        <button type="submit"  class="button title2"> Add to Cart </button>
+                        <button type="submit"  id="addCart" onclick="getProductContent()" class="button title2"> Add to Cart </button>
                     </section>
                     <section class="infoDetailsProdCep">
                         <span class="title3"> Calcular Frete </span>
@@ -37,11 +37,11 @@
             {{>_cep}}
             <section class="detailsFooter">
                 <span class="title1">Description</span>
-                <p> Tamanho: {{product.sizeProd}}</p>
-                <p> Tipo: {{product.typeProd}}</p>
-                <p> Cor: {{product.colorProd}}</p>
-                <p> Peso: {{product.wieghtProd}} g</p>
-                <p> Descrição: {{product.descProd}}</p>
+                <p> Tamanho:<span id="sizeProd">{{product.sizeProd}}</span></p>
+                <p> Tipo: <span id="typeProd">{{product.typeProd}}</span></p>
+                <p> Cor: <span id="colorProd">{{product.colorProd}}</span></p>
+                <p> Peso: <span id="wieghtProd">{{product.wieghtProd}} g</span></p>
+                <p> Descrição: <span id="descProd">{{product.descProd}}</span></p>
               
             </section>
         </div>
