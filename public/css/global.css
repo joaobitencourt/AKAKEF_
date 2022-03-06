@@ -481,6 +481,20 @@ body::-webkit-scrollbar-thumb {
   transform: rotate(270deg);
 }
 
+/* notification */
+.notification{
+  border-radius: 20px;
+  background: crimson;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px;
+ /*  position: absolute;
+  top: 15%;
+  right: 24%; */
+}
 /*---------------------------------*/
 .navigation ul li {
   width: 100%;

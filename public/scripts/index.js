@@ -56,51 +56,62 @@ subeMenu.forEach(subeMenur => {
 /* Cart */
 /* const addCart = document.querySelector("#addCart");
  */
-function getProductContent() {
-    const productCart = {
-        imageProd: document.getElementById("imageProd").getAttribute("src"),
-        nameProd: document.getElementById("nameProd").textContent,
-        sizeProd: document.getElementById("sizeProd").textContent,
-        colorProd: document.getElementById("colorProd").textContent,
-        valProd: document.getElementById("valProd").textContent
-    }
-    return productCart
+const shopCartParent = document.querySelector("#shopCartParent")//parenteElement 
+let myArrry = JSON.parse(localStorage.getItem("shopingCart")); //pegando os dados jsonObjct e passando para um js array
+if(!myArrry){
+    myArrry = [];
 }
-/* addCart.addEventListener("click", ()=>{
+const sendLocalStorageToView = function(){
+    localStorage.setItem("shopingCart", JSON.stringify(myArrry));
+    if(myArrry.length > 0){
+        let resuslts = myArrry.map(product =>{
+            return`
+        <div class="shopCartItems">
+            <img id="image" src="${product.imageProd}"> 
+            <section class="shopCartName">
+                <p id="name">${product.nameProd}</p>
+                <p id="size">${product.sizeProd}</p>
+                <p id="color">${product.colorProd}</p>
+                <p>${product.count}</p>
+                <p id="val">${product.price}</p>
+            </section>
+        </div>
+            `
+        });
+        shopCartParent.innerHTML = resuslts.join("");
+        document.querySelector(".shopCartBottom").classList.remove("hide");
+
+    }else{
+        document.querySelector(".shopCartBottom").classList.add("hide");
+        shopCartParent.innerHTML = "<h1>O carrinho está vazio</h1>";
+    }
+};
+
+function sendDataToLocalStogare(product){
+    for (let i = 0; i < myArrry.length; i++){
+        if(myArrry[i].nameProd == product.nameProd && myArrry[i].sizeProd == product.sizeProd && myArrry[i].colorProd == product.colorProd){
+            myArrry[i].count += 1;
+            myArrry[i].price = myArrry[i].valProd * myArrry[i].count;
+            return;
+        }
+        console.log(product);
+        console.log("1qqwq");
+    }
+    myArrry.push(product);
+}
+
+function getProductContent() {
     let productCart = {
         imageProd: document.getElementById("imageProd").getAttribute("src"),
         nameProd: document.getElementById("nameProd").textContent,
         sizeProd: document.getElementById("sizeProd").textContent,
         colorProd: document.getElementById("colorProd").textContent,
-        valProd: document.getElementById("valProd").textContent
+        valProd: document.getElementById("valProd").textContent,
+        price: document.getElementById("valProd").textContent,
+        count: 1
     }
-    return productCart
-}); */
-
-function sendDataToLocalStogare() {
-    let myArrry =[];
-
-/* Serialize e Adicionando no Locla Storage */
-let productCart_Serialized = JSON.stringify(productCart = getProductContent());
-myArrry.push(productCart_Serialized);
-localStorage.setItem("item", myArrry);
-alert("Item Adicionado no Carrinho!")
-
-/* Desserializer e Pegando os dasdos do objct json */
-let itemData = localStorage.getItem("item");
-let data = JSON.parse(itemData);
-
+    sendDataToLocalStogare(productCart);
+    sendLocalStorageToView();
+    
 }
-
-/* 
-function getItems(data) {
-    document.getElementById("image").setAttribute("src", data.imageProd)
-    document.getElementById("name").textContent = data.nameProd;
-    document.getElementById("size").textContent = data.sizeProd;
-    document.getElementById("color").textContent = data.colorProd;
-    document.getElementById("val").textContent = data.valProd;
-    console.log(data.imageProd, data.nameProd,
-    data.sizeProd,
-    data.colorProd,
-    data.valProd);
-} */
+sendLocalStorageToView();
