@@ -43,9 +43,13 @@ module.exports = function(passport){
     passport.deserializeUser((idCli, done) =>{
         console.log("chegou aqui deserializeUser");
         console.log(idCli);
-        Cliente.findByPk(idCli, (err, user) =>{
-            done(err, user, {message: "algo deu errado!"});
-            console.log(user);""
+        Cliente.findOne({where: {idCli:idCli}}).then((user) =>{
+            if(user){
+
+                return done(null, false, {message: "Usuário não encontrado" });
+            }else{
+                done(null, user);
+            }
         })
     });
     
