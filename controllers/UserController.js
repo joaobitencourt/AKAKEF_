@@ -84,4 +84,10 @@ module.exports = class UserController{
         })(req, res, next)
 
     }
+
+    static logout(req, res){
+        req.logout();
+        req.flash("success_msg", "Deslogado!");
+        res.redirect("/");
+    }
 }

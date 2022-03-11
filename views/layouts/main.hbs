@@ -29,7 +29,11 @@
             </section>
 
             <section class="menuItens">
+                {{#if user}}
+                <li id="userArea" class="iconBar user"><a href="/users"> <i class="fas fa-user"></i> </a></li>
+                {{else}}
                 <li id="userArea" class="iconBar user"><a href="/users/login"> <i class="fas fa-user"></i> </a></li>
+                {{/if}}
                 <li id="modalPopUp" class="iconBar ">
                <a href="#"><i class="fas fa-shopping-bag "> 
                </i> </a></li>
@@ -66,17 +70,19 @@
                 </a>
             </li>
         </ul>
-
+        {{#if user}}
         <section class="navigationFooter">
             <ul>
                 <li>
-                    <a href="">
+                    <a href="/user/logout">
                         <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
                         <span class="title title5">Exit</span>
                     </a>
                 </li>
             </ul>
         </section>
+        {{else}}
+        {{/if}}
     </div>
 
     <div class="settings hide">

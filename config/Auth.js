@@ -33,7 +33,7 @@ module.exports = function(passport){
     }));
 
     /* levando os dados do user para uma sessão */
-    
+                                                                                                                                                                                                                                                                        
     passport.serializeUser ((user, done) => {
         console.log("chegou aqui serializeUser");
         console.log(user.idCli);
@@ -43,9 +43,9 @@ module.exports = function(passport){
     passport.deserializeUser((idCli, done) =>{
         console.log("chegou aqui deserializeUser");
         console.log(idCli);
-        Cliente.findOne({where: {idCli:idCli}}).then((user) =>{
-            if(user){
-
+        Cliente.findOne({ raw:true, where: {idCli:idCli}}).then((user) =>{
+            console.log(user);
+            if(!user){
                 return done(null, false, {message: "Usuário não encontrado" });
             }else{
                 done(null, user);

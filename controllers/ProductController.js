@@ -51,9 +51,6 @@ module.exports = class ProductController{
                             console.log(dataRsponse);
                         });
                     });
-/*                     if (typeof window !== 'undefined') {
-                        window.localStorage.setItem(23123132312331, response);
-                    } */
                     req.flash("cep", dataRsponse);
                     const idProd = req.params.idProd;
                     res.redirect(`/product/details/${idProd}`);
