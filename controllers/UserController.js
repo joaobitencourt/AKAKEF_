@@ -90,4 +90,8 @@ module.exports = class UserController{
         req.flash("success_msg", "Deslogado!");
         res.redirect("/");
     }
+
+    static perfil(req, res){
+        res.render("User/perfil",  {layout: "main"});
+    }
 }

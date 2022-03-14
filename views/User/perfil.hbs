@@ -1,0 +1,40 @@
+{{#each errors}}
+    <div class="alert error-msg normalCase">{{texto}}</div>
+    {{else}}
+{{/each}}
+<div id="UserSettings">
+    <section class="UserComunsData">
+            <section class="OptionTiteleHeader">
+                    <span class="titleFinesse">Configurações do Usuário</span>
+            </section>
+        <form class="flexCenterColumn" action="/users/register" method="post">
+                <div class="wrapper">
+                    <div class="input-Data">
+                        <input type="text" name="nameCli" required value = "{{user.nameCli}}">
+                        <section class="line"></section>
+                        <label class="title3">Nome</label>
+                    </div>
+                    <div class="input-Data">
+                        <input  type="text" name="emailCli" required value="{{user.emailCli}}">
+                        <section class="line"></section>
+                        <label class="title3">Email</label>
+                    </div> 
+                    <div class="input-Data">
+                        <input type="text" name="cellCli" required value="{{user.cellCli}}">
+                        <section class="line"></section>
+                        <label class="title3">Numero de Celular</label>
+                    </div>
+                    <div class="input-Data">
+                        <input type="password" name="passCli" required value="{{user.passCli}}">
+                        <section class="line"></section>
+                        <label class="title3">Senha</label>
+                    </div>
+                </div>
+            <input class="linkButton update" type="submit" value="Atualizar">
+        </form>
+    </section>
+    <section class="UserEndereco">
+        
+    </section>
+</div>
+

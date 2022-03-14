@@ -151,8 +151,8 @@ p {
 }
 
 .update{
-  border: 2px solid green;
-  background-color: #ff7f50;
+  border: 2px solid blue;
+  background-color: rgb(108, 108, 221);
   color: var(--main-Background);
 }
 
