@@ -2,25 +2,33 @@
  */const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcryptjs");
 const Cliente = require("../models/Cliente");
+const Func = require("../models/Func");
  
 module.exports = function(passport){
 
-    passport.use(new LocalStrategy({usernameField: 'emailCli', passwordField: 'passCli'}, (emailCli, passCli, done ) =>{
-        console.log(emailCli,passCli);
-        Cliente.findOne({raw: true, where: {emailCli:emailCli}}).then((user) =>{
+    passport.use(new LocalStrategy({usernameField: 'email', passwordField: 'password'}, (email, password, done ) =>{
+        console.log(email,password);
+        Cliente.findOne({raw: true, where: {email:email}}).then((user) =>{
             console.log(user);
             if(!user){
+                Func.findOne({raw: true, where:{email:email}}).then((user) =>{
+                    if(!user){
+                    console.log("conta nao existe");
+                    return done(null, false, {message: "Está conta não existe!"});
+                    }
+                    console.log("senha");
+                }).catch((error)=>{
+                    console.log("Erro.:" + error.message);
+                })
                 console.log(user);
                 /* no done são passados 3 parametros os dados na conta (no caso null), 
                 se foi autentificado com sucesso e uma menssagen */
-                console.log("conta nao existe");
-                return done(null, false, {message: "Está conta não existe!"});
             }
 
             //se existir iremos comparar a senha
-            bcrypt.compare(passCli, user.passCli, (erro, equal) =>{
-                console.log(passCli);
-                console.log(user.passCli);
+            bcrypt.compare(password, user.password, (erro, equal) =>{
+                console.log(password);
+                console.log(user.password);
                 if(equal){
                     console.log("senha correta");
                     return done(null, user);
@@ -36,14 +44,14 @@ module.exports = function(passport){
                                                                                                                                                                                                                                                                         
     passport.serializeUser ((user, done) => {
         console.log("chegou aqui serializeUser");
-        console.log(user.idCli);
-        done(null, user.idCli);
+        console.log(user.id);
+        done(null, user.id);
     });
     
-    passport.deserializeUser((idCli, done) =>{
+    passport.deserializeUser((id, done) =>{
         console.log("chegou aqui deserializeUser");
-        console.log(idCli);
-        Cliente.findOne({ raw:true, where: {idCli:idCli}}).then((user) =>{
+        console.log(id);
+        Cliente.findOne({ raw:true, where: {id:id}}).then((user) =>{
             console.log(user);
             if(!user){
                 return done(null, false, {message: "Usuário não encontrado" });

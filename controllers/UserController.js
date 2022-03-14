@@ -12,33 +12,33 @@ module.exports = class UserController{
         var errors = []
         const cliente = {
             nameCli: req.body.nameCli,
-            emailCli: req.body.emailCli,
+            email: req.body.email,
             cellCli: req.body.cellCli,
-            passCli: req.body.passCli,
+            password: req.body.password,
         }
         
         if(!cliente.nameCli || typeof cliente.nameCli == undefined || cliente.nameCli == null ){
             errors.push({texto: "O campo nome é obrigatório!"});
         }
-        if(!cliente.emailCli || typeof cliente.emailCli == undefined || cliente.emailCli == null ){
+        if(!cliente.email || typeof cliente.email == undefined || cliente.email == null ){
             errors.push( {texto: "O campo email é obrigatório!"} );
         } 
         if(!cliente.cellCli || typeof cliente.cellCli == undefined || cliente.cellCli == null ){
             errors.push( {texto: "O campo celular é obrigatório!"} );
         }
-        if(!cliente.passCli || typeof cliente.passCli == undefined || cliente.passCli == null ){
+        if(!cliente.password || typeof cliente.password == undefined || cliente.password == null ){
             errors.push( {texto: "O campo senha é obrigatório seu vagabundo!"} );
         }
-        if(cliente.passCli.length <= 4 || cliente.passCli.length < 8){
+        if(cliente.password.length <= 4 || cliente.password.length < 8){
             errors.push( {texto:"Senha muito pequena"} );
         }
-        if(cliente.passCli != req.body.passCliConfirm){
+        if(cliente.password != req.body.passWordConfirmed){
             errors.push( {texto:"Senhas não coincidem"} );
         }
         if(errors.length > 0){
             res.render("User/create", { errors: errors, layout: "main"});
         }else{
-            Cliente.findOne({ raw: true, where: {emailCli:cliente.emailCli} }).then((user) => {
+            Cliente.findOne({ raw: true, where: {email:cliente.email} }).then((user) => {
                 if(user){
                     console.log(cliente)
                     console.log(user);
@@ -46,12 +46,12 @@ module.exports = class UserController{
                     res.redirect("/");
                 }else{
                     bcrypt.genSalt(10, (erro, salt) => {
-                        bcrypt.hash(cliente.passCli, salt, (erro, hash) =>{
+                        bcrypt.hash(cliente.password, salt, (erro, hash) =>{
                             if(erro){
                                 req.flash("error_msg", "Erro ao criar o usuário!")
                                 res.redirect("/");
                             }
-                             cliente.passCli = hash;
+                             cliente.password = hash;
                              Cliente.create(cliente).then(()=>{
                                 req.flash("success_msg", "Usuário criado com sucesso!");
                                 res.redirect("/");

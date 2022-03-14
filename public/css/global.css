@@ -1084,3 +1084,27 @@ margin-right: .2em;
   opacity: 1;
   animation: fadein 1s ease-in-out forwards;
 }
+
+/* User settings */
+#UserSettings .userSettings{
+  margin-bottom: 5rem;
+  border-top: 1px solid;
+}
+
+#UserSettings .userSettings .wrapper{
+  max-width: 800px;
+  width: 700px;
+}
+
+#UserSettings .userSettings .OptionTiteleHeader{
+  margin-bottom: 0;
+} 
+
+
+#UserSettings .userSettings:last-child{
+  margin-bottom: .5rem;
+}
+
+#UserSettings .userSettings:first-child{
+  border-top: none;
+}

@@ -2,17 +2,18 @@ const db = require("../db/conn");
 const { DataTypes } = require("sequelize");
 
 const Cliente = db.define("tbCliente",{
-    idCli: {
+    id: {
         type: DataTypes.SMALLINT.UNSIGNED,
         primaryKey: true,
         autoIncrement: true,
+        field: "idCli"
     },
     nameCli: {
         type: DataTypes.CHAR(200),
         allowNull: false,
         field: "name_Cli"
     },
-    emailCli: {
+    email: {
         type: DataTypes.CHAR(200),
         unique: true,
         allowNull: false,
@@ -23,7 +24,7 @@ const Cliente = db.define("tbCliente",{
         allowNull: true,
         field: "cell_Cli",
     },
-    passCli: {
+    password: {
         type: DataTypes.CHAR(200),
         allowNull: false,
         field: "pass_Cli",

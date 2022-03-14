@@ -2,10 +2,11 @@ const db = require("../db/conn");
 const { DataTypes } = require("sequelize");
 
 const Func = db.define("tbFuncionario",{
-    idFunc: {
+    id: {
         type: DataTypes.SMALLINT.UNSIGNED,
         primaryKey: true,
         autoIncrement: true,
+        field: "idFunc"
     },
     cpfFunc:{
         type: DataTypes.CHAR(11),
@@ -18,13 +19,13 @@ const Func = db.define("tbFuncionario",{
         allowNull: false,
         field: "name_Func"
     },
-    emailFunc: {
+    email: {
         type: DataTypes.CHAR(200),
         unique: true,
         allowNull: false,
-        field: "email_Cli",
+        field: "email_Func",
     },
-    passFunc: {
+    password: {
         type: DataTypes.CHAR(200),
         allowNull: false,
         field: "pass_Func",

@@ -3,7 +3,7 @@
     {{else}}
 {{/each}}
 <div id="UserSettings">
-    <section class="UserComunsData">
+    <section class="userSettings comunData">
             <section class="OptionTiteleHeader">
                     <span class="titleFinesse">Configurações do Usuário</span>
             </section>
@@ -15,7 +15,7 @@
                         <label class="title3">Nome</label>
                     </div>
                     <div class="input-Data">
-                        <input  type="text" name="emailCli" required value="{{user.emailCli}}">
+                        <input  type="text" name="emailCli" required value="{{user.email}}">
                         <section class="line"></section>
                         <label class="title3">Email</label>
                     </div> 
@@ -25,7 +25,7 @@
                         <label class="title3">Numero de Celular</label>
                     </div>
                     <div class="input-Data">
-                        <input type="password" name="passCli" required value="{{user.passCli}}">
+                        <input type="password" name="passCli" required value="{{user.password}}">
                         <section class="line"></section>
                         <label class="title3">Senha</label>
                     </div>
@@ -33,8 +33,44 @@
             <input class="linkButton update" type="submit" value="Atualizar">
         </form>
     </section>
-    <section class="UserEndereco">
-        
+    <section class="userSettings endereco">
+        <section class="OptionTiteleHeader">
+                    <span class="titleFinesse">Endereço</span>
+            </section>
+        <form class="flexCenterColumn" action="/users/register" method="post">
+                <div class="wrapper">
+                    <div class="input-Data">
+                        <input type="text" name="CEP" required >
+                        <section class="line"></section>
+                        <label class="title3">Cep</label>
+                    </div>
+                    <div class="input-Data">
+                        <input  type="text" name="Logra" required>
+                        <section class="line"></section>
+                        <label class="title3">Logra</label>
+                    </div> 
+                    <div class="input-Data">
+                        <input type="text" name="Bairro" required>
+                        <section class="line"></section>
+                        <label class="title3">Bairro</label>
+                    </div>
+                    <div class="input-Data">
+                        <input type="text" name="cidade" required>
+                        <section class="line"></section>
+                        <label class="title3">Cidade</label>
+                    </div>
+                    <div class="input-Data">
+                        <input type="text" name="numEdi" required>
+                        <section class="line"></section>
+                        <label class="title3">Numero</label>
+                    </div>
+                    <div class="input-Data">
+                        <input type="text" name="comple" required>
+                        <section class="line"></section>
+                        <label class="title3">Complemento</label>
+                    </div>                    
+                </div>
+            <input class="linkButton save" type="submit" value="Salvar">
+        </form>
     </section>
 </div>
-
