@@ -8,7 +8,7 @@ const Cliente = db.define("tbCliente",{
         autoIncrement: true,
         field: "idCli"
     },
-    nameCli: {
+    name: {
         type: DataTypes.CHAR(200),
         allowNull: false,
         field: "name_Cli"
@@ -19,7 +19,7 @@ const Cliente = db.define("tbCliente",{
         allowNull: false,
         field: "email_Cli",
     },
-    cellCli:  {
+    cell:  {
         type: DataTypes.BIGINT.UNSIGNED,
         allowNull: true,
         field: "cell_Cli",

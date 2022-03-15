@@ -13,7 +13,7 @@ const uploadFile = require("../models/ImageStorage");
 router.get("/admin/product/all",  authIsTrueOrFalse, isOnlyAdmin, ProductController.showProductsAll);
 //create um meio de campo entre a postagem e o controller
 //nome do campo que pegaremos a imagem
-router.post("/admin/product/create", authIsTrueOrFalse, isOnlyAdmin, Multer.single("imageProd"), uploadFile, ProductController.createProductSave);
+router.post("/admin/product/create", authIsTrueOrFalse,  isOnlyAdmin, Multer.single("imageProd"), uploadFile, ProductController.createProductSave);
 router.get("/admin/product/create", authIsTrueOrFalse, isOnlyAdmin, ProductController.createProducts);
 
 router.get("/product/details/:idProd", authIsTrueOrFalse,  ProductController.getOneProduct);

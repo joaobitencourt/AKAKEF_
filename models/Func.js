@@ -8,13 +8,13 @@ const Func = db.define("tbFuncionario",{
         autoIncrement: true,
         field: "idFunc"
     },
-    cpfFunc:{
+    CPF:{
         type: DataTypes.CHAR(11),
         unique: true,
         allowNull: false,
         field: "cpf_Func"
     },
-    nameFunc: {
+    name: {
         type: DataTypes.CHAR(200),
         allowNull: false,
         field: "name_Func"
@@ -30,7 +30,7 @@ const Func = db.define("tbFuncionario",{
         allowNull: false,
         field: "pass_Func",
     },
-    cellFnc:  {
+    cell:  {
         type: DataTypes.BIGINT.UNSIGNED,
         allowNull: true,
         field: "cell_Func",
@@ -40,9 +40,11 @@ const Func = db.define("tbFuncionario",{
         allowNull: false,
         field: "type_Acess"
     },
-    born_Func:{
+    born:{
         type: DataTypes.DATE,
         allowNull: false,
+        field: "born_Func"
+
     },
     createdAt:{
         type: DataTypes.DATE,

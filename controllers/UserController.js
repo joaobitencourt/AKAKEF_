@@ -11,19 +11,19 @@ module.exports = class UserController{
     static registerSave (req,res){
         var errors = []
         const cliente = {
-            nameCli: req.body.nameCli,
+            name: req.body.name,
             email: req.body.email,
-            cellCli: req.body.cellCli,
+            cell: req.body.cell,
             password: req.body.password,
         }
         
-        if(!cliente.nameCli || typeof cliente.nameCli == undefined || cliente.nameCli == null ){
+        if(!cliente.name || typeof cliente.name == undefined || cliente.name == null ){
             errors.push({texto: "O campo nome é obrigatório!"});
         }
         if(!cliente.email || typeof cliente.email == undefined || cliente.email == null ){
             errors.push( {texto: "O campo email é obrigatório!"} );
         } 
-        if(!cliente.cellCli || typeof cliente.cellCli == undefined || cliente.cellCli == null ){
+        if(!cliente.cell || typeof cliente.cell == undefined || cliente.cell == null ){
             errors.push( {texto: "O campo celular é obrigatório!"} );
         }
         if(!cliente.password || typeof cliente.password == undefined || cliente.password == null ){
@@ -85,13 +85,14 @@ module.exports = class UserController{
 
     }
 
+    static perfil(req, res){
+        res.render("User/perfil",  {layout: "main"});
+    }
+    
     static logout(req, res){
         req.logout();
         req.flash("success_msg", "Deslogado!");
         res.redirect("/");
     }
 
-    static perfil(req, res){
-        res.render("User/perfil",  {layout: "main"});
-    }
 }

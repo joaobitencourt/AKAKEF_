@@ -1,0 +1,43 @@
+{{#each errors}}
+    <div class="alert error-msg normalCase">{{texto}}</div>
+    {{else}}
+{{/each}}
+     <section class="OptionTiteleHeader">
+            <span class="titleFinesse">Cadastro de produtos</span>
+    </section>
+    {{!-- o enctype serve para mostrar que o formulário ira mandar mais de um tipo de dado --}}
+    <form action="/admin/funcionario/register" method="post" class="form">
+    <div class="form-control">
+        <label for="CPF">CPF:</label>
+        <input type="text" name="CPF" placeholder="Digite o CPF do Funcionario">
+    </div>    
+    <div class="form-control">
+        <label for="name">Nome:</label>
+        <input type="text" name="name" placeholder="Digite o nome do Funcionario">
+    </div>
+    <div class="form-control">
+        <label for="email">Email:</label>
+        <input type="text" name="email" placeholder="Digite o email do Funcionario">
+    </div>
+    <div class="form-control">
+        <label for="cell">Cell:</label>
+        <input type="text" name="cell" placeholder="Digite o Celular do Funcionario">
+    </div>
+     <div class="form-control">
+        <label for="password">Senha:</label>
+        <input type="text" name="password" placeholder="Digite a senha do Funcionario">
+    </div>
+    <div class="form-control">
+        <label for="passWordConfirmed">Confirmar senha:</label>
+        <input type="text" name="passWordConfirmed" placeholder="Digite a senha do Funcionario">
+    </div>
+    <div class="form-control">
+        <label for="typeAcess">Cargo:</label>
+        <input type="text" name="typeAcess" placeholder="Digite o cargo do Funcionario">
+    </div>
+    <div class="form-control">
+        <label for="born">Data de Nascimento:</label>
+        <input type="date" name="born" placeholder="Digite a data de nascimento do Funcionario">
+    </div>
+    <input type="submit" value="Cadasrtar" class="linkButton save center">
+    </form>

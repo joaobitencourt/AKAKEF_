@@ -16,7 +16,18 @@ module.exports = function(passport){
                     console.log("conta nao existe");
                     return done(null, false, {message: "Está conta não existe!"});
                     }
-                    console.log("senha");
+                    bcrypt.compare(password, user.password, (erro, equal) =>{
+                        console.log(password);
+                        console.log(user.password);
+                        if(equal){
+                            console.log("senha correta");
+                            return done(null, user);
+                        }else{
+                            console.log("senha incorreta");
+                            return done(null, false, {message: "Senha incorreta!"});
+                        }
+                    })
+                    console.log(user);
                 }).catch((error)=>{
                     console.log("Erro.:" + error.message);
                 })
@@ -44,21 +55,32 @@ module.exports = function(passport){
                                                                                                                                                                                                                                                                         
     passport.serializeUser ((user, done) => {
         console.log("chegou aqui serializeUser");
-        console.log(user.id);
-        done(null, user.id);
+        console.log(user.email);
+        done(null, user.email);
     });
     
-    passport.deserializeUser((id, done) =>{
+    passport.deserializeUser((email, done) =>{
         console.log("chegou aqui deserializeUser");
-        console.log(id);
-        Cliente.findOne({ raw:true, where: {id:id}}).then((user) =>{
+        console.log(email);
+        Cliente.findOne({ raw:true, where: {email:email}}).then((user) =>{
             console.log(user);
             if(!user){
-                return done(null, false, {message: "Usuário não encontrado" });
+                console.log("admin");
+                Func.findOne({raw: true, where: {email:email}}).then((user) =>{
+                    done(null, user);
+/*                     if(!user){
+                         return done(null, false, {message: "Usuário não encontrado" });
+
+                    }else{
+                        
+                    } */
+                });
             }else{
+                console.log("else");
                 done(null, user);
             }
-        })
+            
+        });
     });
     
 }
