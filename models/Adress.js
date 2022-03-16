@@ -19,6 +19,10 @@ const Adress = db.define("tbEndereco",{
         type: DataTypes.STRING(200),
         allowNull:false,
     },
+    UF:{
+        type: DataTypes.CHAR(2),
+        allowNull:false,
+    },
     numEdi:{
         type: DataTypes.SMALLINT,
         allowNull: false,  

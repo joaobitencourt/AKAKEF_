@@ -10,22 +10,22 @@
         <form class="flexCenterColumn" action="/users/register" method="post">
                 <div class="wrapper">
                     <div class="input-Data">
-                        <input type="text" name="nameCli" required value = "{{user.name}}">
+                        <input type="text" name="name" required value = "{{user.name}}">
                         <section class="line"></section>
                         <label class="title3">Nome</label>
                     </div>
                     <div class="input-Data">
-                        <input  type="text" name="emailCli" required value="{{user.email}}">
+                        <input  type="text" name="email" required value="{{user.email}}">
                         <section class="line"></section>
                         <label class="title3">Email</label>
                     </div> 
                     <div class="input-Data">
-                        <input type="text" name="cellCli" required value="{{user.cell}}">
+                        <input type="text" name="cell" required value="{{user.cell}}">
                         <section class="line"></section>
                         <label class="title3">Numero de Celular</label>
                     </div>
                     <div class="input-Data">
-                        <input type="password" name="passCli" required value="{{user.password}}">
+                        <input type="password" name="password" required value="{{user.password}}">
                         <section class="line"></section>
                         <label class="title3">Senha</label>
                     </div>
@@ -40,24 +40,29 @@
         <form class="flexCenterColumn" action="/users/register" method="post">
                 <div class="wrapper">
                     <div class="input-Data">
-                        <input type="text" name="CEP" required >
+                        <input type="text" name="CEP" id="cep" required >
                         <section class="line"></section>
                         <label class="title3">Cep</label>
                     </div>
                     <div class="input-Data">
-                        <input  type="text" name="Logra" required>
+                        <input  type="text" name="Logra" id="logradouro" required>
                         <section class="line"></section>
                         <label class="title3">Logra</label>
                     </div> 
                     <div class="input-Data">
-                        <input type="text" name="Bairro" required>
+                        <input type="text" name="Bairro" id="bairro" required>
                         <section class="line"></section>
                         <label class="title3">Bairro</label>
                     </div>
                     <div class="input-Data">
-                        <input type="text" name="cidade" required>
+                        <input type="text" name="cidade" id="localidade" required>
                         <section class="line"></section>
                         <label class="title3">Cidade</label>
+                    </div>
+                    <div class="input-Data">
+                        <input type="text" name="uf" id="uf" required>
+                        <section class="line"></section>
+                        <label class="title3">UF</label>
                     </div>
                     <div class="input-Data">
                         <input type="text" name="numEdi" required>
@@ -73,4 +78,5 @@
             <input class="linkButton save" type="submit" value="Salvar">
         </form>
     </section>
+    <script src="scripts/cep.js"></script>
 </div>

@@ -68,12 +68,6 @@ module.exports = function(passport){
                 console.log("admin");
                 Func.findOne({raw: true, where: {email:email}}).then((user) =>{
                     done(null, user);
-/*                     if(!user){
-                         return done(null, false, {message: "Usuário não encontrado" });
-
-                    }else{
-                        
-                    } */
                 });
             }else{
                 console.log("else");
