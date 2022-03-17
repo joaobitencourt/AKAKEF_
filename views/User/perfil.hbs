@@ -37,7 +37,7 @@
         <section class="OptionTiteleHeader">
                     <span class="titleFinesse">Endereço</span>
             </section>
-        <form class="flexCenterColumn" action="/users/register" method="post">
+        <form class="flexCenterColumn" action="/users/adressRegister" method="post">
                 <div class="wrapper">
                     <div class="input-Data">
                         <input type="text" name="CEP" id="cep" required >
@@ -77,6 +77,12 @@
                 </div>
             <input class="linkButton save" type="submit" value="Salvar">
         </form>
+        <section id="Enderecos" style="background: green; width: 500px; height: 500px;">
+            {{#each adresses}}
+            <p> {{this.CEP}} </p>
+            {{/each}}
+            <P>SDA</P>
+        </section>
     </section>
     <script src="scripts/cep.js"></script>
 </div>

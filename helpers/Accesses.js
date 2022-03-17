@@ -4,7 +4,7 @@ module.exports = {
             return next();
         }
         req.flash("error_msg", "Para acessar está área é preciso estar logado");
-        res.redirect("/");
+        res.redirect("/users/login");
     },
 
     isOnlyAdmin: function(req, res, next){

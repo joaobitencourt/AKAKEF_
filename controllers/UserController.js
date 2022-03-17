@@ -1,4 +1,6 @@
 const Cliente = require("../models/Cliente");
+const Adress = require("../controllers/AdressController");
+/* const Adress = require("../models/Adress"); */
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 
@@ -86,7 +88,10 @@ module.exports = class UserController{
     }
 
     static perfil(req, res){
-        res.render("User/perfil",  {layout: "main"});
+        const id = req.user.id;
+        const adress = Adress.adressRegisterAll(id);
+        console.log("perfil");
+        res.render("User/perfil", {adress, layout: "main"});
     }
     
     static logout(req, res){
