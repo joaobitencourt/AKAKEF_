@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const paypal = require("paypal-rest-sdk");
-const paypalConfig = require("../config/paypal.json");
+const PayController = require("../controllers/PayController");
 
-paypal.configure(paypalConfig);
-
-router.get("/pagemanto");
+router.get("/pagamento", PayController.pay);
+router.post("/pagamento", PayController.buy);
+router.get("/pagamento/sucesso", PayController.success);
+router.get("/pagamento/cancel", PayController.cancel);
