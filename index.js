@@ -7,6 +7,7 @@ const session = require("express-session");
 const passport = require("passport");
 const flash = require("connect-flash");
 const port = process.env.APP_Port;
+
 //modules
 const product = require("./models/Product"); 
 const lookbook = require("./models/LookBook");
@@ -17,6 +18,7 @@ const Sessions = require("./models/Sessions");
 const Func = require("./models/Func");
 const img = require("./models/ImageStorage");
 const productsRouts = require("./routes/productsRouts");
+const pay = require("./models/Pay");
 
 /* Configs */
 
@@ -60,10 +62,11 @@ app.use(
     }),
 );
 app.use(express.json());
+
 /* public */
 app.use(express.static("public"));
-/* Routes */
 
+/* Routes */
 app.use("/", require("./routes/UserRouts"));
 app.use("/", require("./routes/lookBookRouts"));
 app.use("/", require("./routes/productsRouts"));
