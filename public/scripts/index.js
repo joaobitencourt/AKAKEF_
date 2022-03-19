@@ -95,10 +95,20 @@ function sendDataToLocalStogare(product){
             return;
         }
         console.log(product);
-        console.log("1qqwq");
     }
     myArrry.push(product);
 }
+
+const somaValor = function(){
+    let a = 0;
+    for(let i = 0; i < myArrry.length; i++){
+        let arr =  parseInt(myArrry[i].price);
+        a += arr;
+        console.log(a);
+        document.getElementById("ProductTotal").setAttribute("value", a);
+    }
+}
+somaValor();
 
 function getProductContent() {
     let productCart = {
@@ -115,3 +125,30 @@ function getProductContent() {
     
 }
 sendLocalStorageToView();
+
+const sendFromLocalStorageToview = function(){
+    const PayProducts = document.getElementById("PayProducts");
+    localStorage.setItem("shopingCart", JSON.stringify(myArrry));
+    if(myArrry.length > 0){
+        let resuslts = myArrry.map(product =>{
+            return`
+        <div class="shopCartItems">
+            <img id="image" src="${product.imageProd}"> 
+            <section class="shopCartName">
+                <p id="name">${product.nameProd}</p>
+                <p id="size">${product.sizeProd}</p>
+                <p id="color">${product.colorProd}</p>
+                <p>${product.count}</p>
+                <p id="val">${product.price}</p>
+            </section>
+        </div>
+            `
+        });
+        PayProducts.innerHTML = resuslts.join("");
+
+    }else{
+        document.querySelector(".shopCartBottom").classList.add("hide");
+        PayProducts.innerHTML = "<h1>Nemnum item adiconado</h1>";
+    }
+};
+sendFromLocalStorageToview();

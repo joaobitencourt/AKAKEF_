@@ -8,7 +8,7 @@ module.exports = class PayController{
 
     static pay (req, res){
         /* Pagina da compra "caixa" */
-        res.send("opa pagamento");
+        res.render("pay/all", {layout: "main"});
     }
 
     static buy(req, res){
