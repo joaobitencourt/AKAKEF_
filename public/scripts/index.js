@@ -69,7 +69,7 @@ const sendLocalStorageToView = function(){
         <div class="shopCartItems">
             <img id="image" src="${product.imageProd}"> 
             <section class="shopCartName">
-                <p id="name">${product.nameProd}</p>
+                <p id="name" name="nome">${product.nameProd}</p>
                 <p id="size">${product.sizeProd}</p>
                 <p id="color">${product.colorProd}</p>
                 <p>${product.count}</p>
@@ -132,14 +132,14 @@ const sendFromLocalStorageToview = function(){
     if(myArrry.length > 0){
         let resuslts = myArrry.map(product =>{
             return`
-        <div class="shopCartItems">
+            <div class="shopCartItems">
             <img id="image" src="${product.imageProd}"> 
             <section class="shopCartName">
-                <p id="name">${product.nameProd}</p>
-                <p id="size">${product.sizeProd}</p>
-                <p id="color">${product.colorProd}</p>
-                <p>${product.count}</p>
-                <p id="val">${product.price}</p>
+                <input type="text" name="name" id="name" value = "${product.nameProd}" readonly>
+                <input type="text" name="size" id="size" value = "${product.sizeProd}">
+                <input type="text" name="color" id="color" value = "${product.colorProd}">
+                <input type="text" name="count" id="count" value = "${product.count}">
+                <input type="text" name="val" id="val" value = "${product.price}">
             </section>
         </div>
             `

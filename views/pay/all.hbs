@@ -1,7 +1,7 @@
 <section class="OptionTiteleHeader">
         <span class="titleFinesse">Caixa</span>  
 </section>
-<div class="pagamentocontent">
+<form action="/pagamento"  class="pagamentocontent" method="post">
     <div class="CartProduct ">
         <section id="PayProducts" class="shopCartMeaddle" style="overflow-y:auto;">
         </section>
@@ -10,10 +10,9 @@
     <div class="CartProductactions ">
         <span class="titleFinesse">Caixa</span>
         <section class="actions">
-            <form action="" method="post">
-                <input type="text" id="ProductTotal">
+                <input type="text" name="totalPagar" id="ProductTotal">
                 <input type="submit" class=" linkButton delete" value="Finalizar Compra">
-            </form>
+           
         </section>
     </div>
-</div>
+ </form>
