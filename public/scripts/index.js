@@ -135,7 +135,7 @@ const sendFromLocalStorageToview = function(){
             <div class="shopCartItems">
             <img id="image" src="${product.imageProd}"> 
             <section class="shopCartName">
-                <input type="text" name="name" id="name" value = "${product.nameProd}" readonly>
+                <input type="text" name="name" id="name" value = "${product.nameProd}" >
                 <input type="text" name="size" id="size" value = "${product.sizeProd}">
                 <input type="text" name="color" id="color" value = "${product.colorProd}">
                 <input type="text" name="count" id="count" value = "${product.count}">

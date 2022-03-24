@@ -8,6 +8,8 @@ if (typeof localStorage === "undefined" || localStorage === null) {
     localStorage = new LocalStorage('./scratch');
   }
 
+const sequelize = require("sequelize");
+const op = sequelize.Op;
 paypal.configure(paypalConfig);
 
 module.exports = class PayController{
@@ -17,30 +19,51 @@ module.exports = class PayController{
         res.render("pay/all", {layout: "main"});
     }
 
-    static buy(req, res){
+    static buy(req, res, next){
         const total = req.body.totalPagar;
-        let arr =[];
         let products = {
-            name: req.body.name,
-            size: req.body.size,
-            color: req.body.color,
-            count: req.body.count,
-            val: req.body.val
-        }
-        const nameProds = products.name
-        for (let i = 0; i < nameProds.length; i++) {
-            const element = nameProds[i];
-            Product.findOne({raw: true, where: { nameProd: element}}).then((product) =>{
-                if(!product){
-                    req.flash("error_msg", "Produto não existe o não está em estoque");
+            varifyProds : {name : req.body.name, size :  req.body.size, color :  req.body.color, count: req.body.count},
+        };
+        console.log(products);
+        const verify = products.varifyProds
+        let numberOfElements = verify.name.length;
+        let soma = 0;
+        let isEstoque = 0;
+        for (let i = 0; i < numberOfElements; i++) {
+           let names = verify.name[i];
+           let color = verify.color[i];
+           let size = verify.size[i];
+            Product.findOne({raw: true, where: { nameProd: names }, [op.and]: { colorProd: color }, [op.and]: { sizeProd: size }}).then((product) =>{           
+                if( !product || typeof product == undefined || product == null){
+                    console.log("chegou aqui");
+                    req.flash("error_msg", "Produto não existe ou não está em estoque");
                     res.redirect("/pagamento");
                 }else{
-                    req.flash("success_msg", "Produto existente!");
-                    res.redirect("/pagamento");
+                    let count = verify.count[i]
+                    console.log(count);
+                    let val = product.valProd; 
+                    soma += val * count;
+                    console.log(soma);
+                    console.log(product);
+                    let estoque = product.qtdProd;
+                    isEstoque = estoque - count;
+                    console.log(isEstoque);
                 }
-            }).catch((error) => {console.log("Erro.:" + error.message);})            
+                console.log(total + "total int");
+                console.log(soma + "soma");
+                if(soma == total){
+                    console.log("iguais");
+                }else{
+                    console.log("diferentes");
+                }
+                if(product.qtdProd < isEstoque){
+                    console.log("produto fora de estoque");
+                }else{
+                    Product.update({ qtdProd: isEstoque}, {where: {idProd: product.idProd} }).then().catch((error) => {console.log("Error.:" + error.message);})
+                    console.log("produto em estoque");
+                }
+            }).catch((error) => {console.log("Erro.:" + error.message);}) 
         }
-        
     }
 
     static success( req, res ){
