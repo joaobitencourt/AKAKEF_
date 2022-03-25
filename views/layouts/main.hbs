@@ -71,6 +71,17 @@
             </li>
         </ul>
         {{#if user}}
+        <ul>
+            <li>
+                <a href="/admin/product/all">
+                    <span class="icon"><i class="fas fa-chart-line"></i></span>
+                    <span class="title title5">DashBoard</span>
+                </a>
+            </li>
+        </ul>
+        {{ else }}
+        {{/if}}
+        {{#if user}}
         <section class="navigationFooter">
             <ul>
                 <li>

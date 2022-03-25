@@ -16,8 +16,8 @@ router.get("/admin/product/all",  authIsTrueOrFalse, isOnlyAdmin, ProductControl
 router.post("/admin/product/create", authIsTrueOrFalse,  isOnlyAdmin, Multer.single("imageProd"), uploadFile, ProductController.createProductSave);
 router.get("/admin/product/create", authIsTrueOrFalse, isOnlyAdmin, ProductController.createProducts);
 
-router.get("/product/details/:idProd", authIsTrueOrFalse,  ProductController.getOneProduct);
-router.post("/product/details/:idProd", authIsTrueOrFalse,  ProductController.getCepPreco);
+router.get("/product/details/:idProd", ProductController.getOneProduct);
+router.post("/product/details/:idProd",ProductController.getCepPreco);
 router.get("/", ProductController.showProducts);
 
 module.exports = router;

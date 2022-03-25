@@ -85,6 +85,34 @@ const sendLocalStorageToView = function(){
         document.querySelector(".shopCartBottom").classList.add("hide");
         shopCartParent.innerHTML = "<h1>O carrinho está vazio</h1>";
     }
+    sendFromLocalStorageToview();
+    somaValor();   
+};
+
+const sendFromLocalStorageToview = function(){
+    const PayProducts = document.getElementById("PayProducts");
+    localStorage.setItem("shopingCart", JSON.stringify(myArrry));
+    if(myArrry.length > 0){
+        let res = myArrry.map(product =>{
+            return`
+            <div class="shopCartItems">
+            <img id="image" src="${product.imageProd}"> 
+            <section class="shopCartName">
+                <input type="text" name="name" id="name" value = "${product.nameProd}" >
+                <input type="text" name="size" id="size" value = "${product.sizeProd}">
+                <input type="text" name="color" id="color" value = "${product.colorProd}">
+                <input type="text" name="count" id="count" value = "${product.count}">
+                <input type="text" name="val" id="val" value = "${product.price}">
+            </section>
+        </div>
+            `
+        });
+        PayProducts.innerHTML = res.join("");
+
+    }else{
+        document.querySelector(".shopCartBottom").classList.add("hide");
+        PayProducts.innerHTML = "<h1>Nemnum item adiconado</h1>";
+    }
 };
 
 function sendDataToLocalStogare(product){
@@ -108,7 +136,6 @@ const somaValor = function(){
         document.getElementById("ProductTotal").setAttribute("value", a);
     }
 }
-somaValor();
 
 function getProductContent() {
     let productCart = {
@@ -126,29 +153,7 @@ function getProductContent() {
 }
 sendLocalStorageToView();
 
-const sendFromLocalStorageToview = function(){
-    const PayProducts = document.getElementById("PayProducts");
-    localStorage.setItem("shopingCart", JSON.stringify(myArrry));
-    if(myArrry.length > 0){
-        let resuslts = myArrry.map(product =>{
-            return`
-            <div class="shopCartItems">
-            <img id="image" src="${product.imageProd}"> 
-            <section class="shopCartName">
-                <input type="text" name="name" id="name" value = "${product.nameProd}" >
-                <input type="text" name="size" id="size" value = "${product.sizeProd}">
-                <input type="text" name="color" id="color" value = "${product.colorProd}">
-                <input type="text" name="count" id="count" value = "${product.count}">
-                <input type="text" name="val" id="val" value = "${product.price}">
-            </section>
-        </div>
-            `
-        });
-        PayProducts.innerHTML = resuslts.join("");
-
-    }else{
-        document.querySelector(".shopCartBottom").classList.add("hide");
-        PayProducts.innerHTML = "<h1>Nemnum item adiconado</h1>";
-    }
-};
-sendFromLocalStorageToview();
+function clearCart(){
+    localStorage.clear("shopingCart");
+    location.reload(true);
+}
