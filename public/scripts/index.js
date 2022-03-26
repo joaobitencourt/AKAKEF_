@@ -56,7 +56,8 @@ subeMenu.forEach(subeMenur => {
 /* Cart */
 /* const addCart = document.querySelector("#addCart");
  */
-const shopCartParent = document.querySelector("#shopCartParent")//parenteElement 
+const shopCartParent = document.querySelector("#shopCartParent")//parenteElement
+
 let myArrry = JSON.parse(localStorage.getItem("shopingCart")); //pegando os dados jsonObjct e passando para um js array
 if(!myArrry){
     myArrry = [];
@@ -69,11 +70,11 @@ const sendLocalStorageToView = function(){
         <div class="shopCartItems">
             <img id="image" src="${product.imageProd}"> 
             <section class="shopCartName">
-                <p id="name" name="nome">${product.nameProd}</p>
-                <p id="size">${product.sizeProd}</p>
-                <p id="color">${product.colorProd}</p>
-                <p>${product.count}</p>
-                <p id="val">${product.price}</p>
+                <p id="name"><span>${product.nameProd}</span></p>
+                <p id="size"> Tamanho: <span>${product.sizeProd}</span></p>
+                <p id="color"> Cor: <span>${product.colorProd}</span></p>
+                <p id="count"> qtd: <span>${product.count}</span></p>
+                <p id="val"> R$: <span>${product.price}</span></p>
             </section>
         </div>
             `
@@ -86,7 +87,8 @@ const sendLocalStorageToView = function(){
         shopCartParent.innerHTML = "<h1>O carrinho está vazio</h1>";
     }
     sendFromLocalStorageToview();
-    somaValor();   
+    getProductsToSend();
+    somaValor();
 };
 
 const sendFromLocalStorageToview = function(){
@@ -98,11 +100,11 @@ const sendFromLocalStorageToview = function(){
             <div class="shopCartItems">
             <img id="image" src="${product.imageProd}"> 
             <section class="shopCartName">
-                <input type="text" name="name" id="name" value = "${product.nameProd}" >
-                <input type="text" name="size" id="size" value = "${product.sizeProd}">
-                <input type="text" name="color" id="color" value = "${product.colorProd}">
-                <input type="text" name="count" id="count" value = "${product.count}">
-                <input type="text" name="val" id="val" value = "${product.price}">
+                <p id="name"><span>${product.nameProd}</span></p>
+                <p id="size"> Tamanho: <span>${product.sizeProd}</span></p>
+                <p id="color"> Cor: <span>${product.colorProd}</span></p>
+                <p id="count"> qtd: <span>${product.count}</span></p>
+                <p id="val"> R$: <span>${product.price}</span></p>
             </section>
         </div>
             `
@@ -112,6 +114,20 @@ const sendFromLocalStorageToview = function(){
     }else{
         document.querySelector(".shopCartBottom").classList.add("hide");
         PayProducts.innerHTML = "<h1>Nemnum item adiconado</h1>";
+    }
+};
+
+const getProductsToSend = function(){
+    const data = document.querySelector(".data");
+    localStorage.setItem("shopingCart", JSON.stringify(myArrry));
+    if(myArrry.length > 0){
+        let res = myArrry.map(product =>{
+            return`
+            <input type="text" name="codigo" id="codigo" value = "${product.codigo}" hidden style="visibility: hidden;">
+            <input type="text" name="count" id="count" value = "${product.count}" hidden style="visibility: hidden;">
+            `
+        });
+        data.innerHTML = res.join("");
     }
 };
 
@@ -140,6 +156,7 @@ const somaValor = function(){
 function getProductContent() {
     let productCart = {
         imageProd: document.getElementById("imageProd").getAttribute("src"),
+        codigo: document.getElementById("cod").textContent,
         nameProd: document.getElementById("nameProd").textContent,
         sizeProd: document.getElementById("sizeProd").textContent,
         colorProd: document.getElementById("colorProd").textContent,
@@ -147,6 +164,7 @@ function getProductContent() {
         price: document.getElementById("valProd").textContent,
         count: 1
     }
+    console.log(productCart);
     sendDataToLocalStogare(productCart);
     sendLocalStorageToView();
     
@@ -157,3 +175,4 @@ function clearCart(){
     localStorage.clear("shopingCart");
     location.reload(true);
 }
+

@@ -1,19 +1,20 @@
-<div id="Pay">
 <section class="OptionTiteleHeader">
         <span class="titleFinesse">Caixa</span>  
 </section>
-<form action="/pagamento"  class="pagamentocontent" method="post">
-    <div class="CartProduct ">
+<div id="Pay" class="pagamentocontent">
+    <div class="CartProduct">
         <section id="PayProducts" class="shopCartMeaddle" style="overflow-y:auto;">
-        </section>
-        
+        </section>  
     </div>
-    <div class="CartProductactions ">
+    <div class="CartProductactions flexCenterColumn" style="justify-content: flex-start; margin: 0;">
         <span class="titleFinesse">Caixa</span>
-        <section class="actions">
+        <form action="/pagamento" method="post">
+            <section class="data" >
+            </section>
+            <section class="actions">
                 <input type="text" name="totalPagar" id="ProductTotal">
                 <input type="submit" class=" linkButton delete" value="Finalizar Compra">
-        </section>
+            </section>
+        </form>
     </div>
- </form>
 </div>
